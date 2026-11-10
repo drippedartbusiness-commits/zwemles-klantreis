@@ -53,7 +53,7 @@
     .trial__link span { text-decoration: underline; text-underline-position: from-font; }
     .trial__link img { width: 16px; height: 16px; margin-top: 2px; }
 
-    .app { padding: 20px; }
+    .app { padding: 20px 20px 15px; }
     .app__top { display: flex; gap: 14px; align-items: flex-start; }
     .app__icon { width: 56px; height: 56px; border-radius: 16px; flex: none; padding: 6px;
       background: linear-gradient(135deg, #1769e0 0%, #0b5fd6 50%, #0a4cb4 100%); box-shadow: 0 10px 20px -10px rgba(11, 95, 214, 0.9); }
@@ -62,7 +62,8 @@
     .app__top > div { flex: 0 1 243.3px; min-width: 0; }
     .app .h3 { max-width: 220px; }
     .app__txt { margin-top: 3.8px; max-width: 243.3px; overflow-wrap: anywhere; font-size: 14px; line-height: 20px; color: var(--muted); }
-    .app .btn { margin-top: 14.2px; }
+    .app .btn { margin-top: 10.2px; }
+    .app .btn + .btn { margin-top: 9px; }
 
     .help { background: #f6f9ff; padding: 20px; }
     .help p { margin-top: 4px; max-width: 292.4px; font-size: 16px; line-height: 24px; }
@@ -134,11 +135,12 @@
       <div class="app__top">
         <span class="app__icon"><span><img src="../assets/5b88d.png" alt="Optisport"></span></span>
         <div>
-          <h2 class="h3">Volg Noor in de Optisport App</h2>
-          <p class="app__txt">Download de app en log in met jennifer.jansen@voorbeeld.nl. Je account staat al klaar.</p>
+          <h2 class="h3">Volg Noor in de mijn omgeving van Optisport</h2>
+          <p class="app__txt">Log in met jennifer.jansen@voorbeeld.nl. Je account staat al klaar. Je kan de app ook downloaden.</p>
         </div>
       </div>
-      <a class="btn btn-primary btn-sm" href="#"><img src="../assets/1c656.svg" width="16" height="16" alt="">Download de Optisport App</a>
+      <a class="btn btn-primary btn-sm" href="#">Login bij mijn Optisport</a>
+      <a class="btn btn-secondary btn-sm" href="#"><img src="../assets/940d7.svg" width="16" height="16" alt="">Download de Optisport app</a>
     </article>
 
     <article class="card help">

@@ -79,7 +79,7 @@
     .chip { display: flex; align-items: center; justify-content: center; gap: 8px; height: 42px; width: 143px; background: #fff; border: 1.5px solid var(--line); border-radius: 21px; font-weight: 600; font-size: 14px; line-height: 16.8px; color: var(--ink); white-space: nowrap; transition: background .12s ease, border-color .12s ease; }
     .chip--wide { width: 160.9px; }
     .chip img { width: 16px; height: 16px; flex: none; }
-    .chip.is-on { background: #f6f9ff; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(11, 95, 214, 0.14); }
+    .chip.is-on { background: #e8f0fd; border: 2px solid var(--blue); color: var(--blue); }
 
     .note { position: relative; margin-top: 18px; min-height: 94px; background: var(--sky); border-radius: 16px; padding: 15.8px 16px 16px 62px; }
     .note__ic { position: absolute; left: 16px; top: 16px; width: 34px; height: 34px; border-radius: 17px; background: #fff; display: grid; place-items: center;
@@ -153,18 +153,18 @@
       <div class="day-head"><span class="day-head__d">Wo</span><span class="day-head__t">Woensdag</span></div>
       <div class="chips">
         <button class="chip" type="button" aria-pressed="false"><img src="../assets/c1478.svg" width="16" height="16" alt="">Middag 13 - 15</button>
-        <button class="chip chip--wide" type="button" aria-pressed="false"><img src="../assets/c1478.svg" width="16" height="16" alt="">Namiddag 15 - 17</button>
+        <button class="chip chip--wide is-on" type="button" aria-pressed="true"><img src="../assets/a58f2.svg" width="16" height="16" alt="">Namiddag 15 - 17</button>
       </div>
 
       <div class="day-head"><span class="day-head__d">Za</span><span class="day-head__t">Zaterdag · alleen ochtendlessen</span></div>
       <div class="chips">
-        <button class="chip" type="button" aria-pressed="false"><img src="../assets/c1478.svg" width="16" height="16" alt="">Ochtend 9 - 12</button>
+        <button class="chip is-on" type="button" aria-pressed="true"><img src="../assets/a58f2.svg" width="16" height="16" alt="">Ochtend 9 - 12</button>
       </div>
 
       <div class="note">
         <div class="note__ic"><img src="../assets/ad37a.svg" width="16" height="16" alt=""></div>
         <b>Het bad doet een voorstel</b>
-        <p>De planning doet je een voorstel op een van jullie voorkeursdagen.</p>
+        <p>Het bad doet je een voorstel op een van jullie voorkeursdagen.</p>
       </div>
 
       <div class="divider"></div>
@@ -195,6 +195,8 @@
     b.addEventListener('click', function () {
       var on = b.classList.toggle('is-on');
       b.setAttribute('aria-pressed', String(on));
+      var ic = b.classList.contains('chip') && b.querySelector('img');
+      if (ic) ic.src = '../assets/' + (on ? 'a58f2' : 'c1478') + '.svg';
     });
   });
   // samenvatting in- en uitklappen
