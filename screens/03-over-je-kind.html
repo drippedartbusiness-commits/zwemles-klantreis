@@ -63,12 +63,17 @@
     .dob { display: flex; gap: 9px; margin-top: 7.2px; }
     /* velden groeien/krimpen naar verhouding 74 : 74 : 150 (exact op 390) */
     .dob input {
-      height: 55px; flex: 74 1 74px; min-width: 0; width: auto; padding: 0 10px 0 0;
+      display: block; height: 55px; width: 100%; padding: 0 10px 0 0;
       background: #fff; border: 1.5px solid var(--line); border-radius: 12px;
       font-size: 16px; line-height: 19.2px; text-align: center; color: var(--ink);
       outline: none; -moz-appearance: textfield; appearance: textfield;
     }
-    .dob input.dob__y { flex: 150 1 150px; padding-right: 31.6456%; } /* = 100px op 390 */
+    .dob__f { flex: 74 1 74px; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+    .dob__f--y { flex: 150 1 150px; }
+    .dob__f span { font-weight: 500; font-size: 12.5px; line-height: 15px; color: var(--muted); white-space: nowrap; }
+    .dob input.dob__d { padding-right: 22px; }
+    .dob input.dob__m { padding-right: 14px; }
+    .dob input.dob__y { padding-right: 66.6667%; } /* = 100px op 390 */
     .dob input::placeholder { color: #757575; opacity: 1; }
     .dob input:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(11, 95, 214, 0.14); }
 
@@ -127,9 +132,9 @@
 
       <p class="field-label dob-label">Geboortedatum van je kind</p>
       <div class="dob">
-        <input type="text" inputmode="numeric" maxlength="2" placeholder="dd" aria-label="Dag">
-        <input type="text" inputmode="numeric" maxlength="2" placeholder="mm" aria-label="Maand">
-        <input class="dob__y" type="text" inputmode="numeric" maxlength="4" placeholder="jjjj" aria-label="Jaar">
+        <label class="dob__f"><span>Dag</span><input class="dob__d" type="text" inputmode="numeric" maxlength="2" placeholder="dd"></label>
+        <label class="dob__f"><span>Maand</span><input class="dob__m" type="text" inputmode="numeric" maxlength="2" placeholder="mm"></label>
+        <label class="dob__f dob__f--y"><span>Jaar</span><input class="dob__y" type="text" inputmode="numeric" maxlength="4" placeholder="jjjj"></label>
       </div>
 
       <p class="field-label dipl-label">Voor welk diploma gaat je kind zwemmen?</p>
