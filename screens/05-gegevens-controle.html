@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controleer en meld aan · Optisport</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    /* NEW 05 · Aanmelden · gegevens en controle (Figma 737:11186) */
+    .hero { height: 180px; padding: 8px var(--gutter) 0; }
+    .hero__crumb { position: relative; font-weight: 500; font-size: 13px; line-height: 15.6px; }
+    .hero__back { position: relative; display: inline-flex; align-items: center; gap: 4px; margin-top: 3.7px; font-weight: 600; font-size: 14px; line-height: 16.8px; }
+    .hero__back img { width: 16px; height: 16px; margin-top: 1px; }
+    .hero h1 { position: relative; margin-top: 17.9px; font-weight: 700; font-size: 30px; line-height: 34px; letter-spacing: -0.6px; }
+
+    .content { position: relative; margin-top: -46px; padding: 0 var(--gutter) 24px; }
+    .stepper { padding: 18px 18px 28px; }
+
+    .done { display: flex; align-items: flex-start; gap: 12px; height: 58px; }
+    .done--last { height: 46px; }
+    .done__ok { width: 30px; height: 30px; border-radius: 15px; background: #1b7a43; display: grid; place-items: center; flex: none; margin-top: 2px; }
+    .done__ok img { width: 16px; height: 16px; }
+    .done__txt { flex: 1; }
+    .done__lbl { font-weight: 500; font-size: 12.5px; line-height: 15px; color: var(--muted); }
+    .done__val { margin-top: .7px; font-weight: 600; font-size: 14.5px; line-height: 17.4px; }
+    .wijzig { margin-top: 8.6px; font-weight: 600; font-size: 14px; line-height: 16.8px; color: var(--blue); text-decoration: underline; text-underline-position: from-font; }
+
+    .divider { height: 1px; background: #e6eaf0; }
+
+    .step { display: flex; align-items: flex-start; gap: 12px; margin-top: 16px; }
+    .step__n { width: 30px; height: 30px; border-radius: 15px; background: var(--blue); box-shadow: 0 0 0 4px rgba(11, 95, 214, 0.14);
+      display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 14px; line-height: 16.8px; flex: none; }
+    .step__t { margin-top: 3px; font-weight: 700; font-size: 19px; line-height: 24px; letter-spacing: -0.3px; }
+
+    .sub { font-weight: 700; font-size: 16px; line-height: 24px; letter-spacing: -0.2px; }
+    .sub--1 { margin-top: 14px; }
+    .sub--2 { margin-top: 26px; }
+    .field { display: block; }
+    .field__lbl { display: block; margin-top: 13.9px; font-weight: 600; font-size: 14px; line-height: 16.8px; }
+    .field__in { display: block; width: 100%; height: 54px; margin-top: 7.8px; padding: 0 13px; background: #fff;
+      border: 1.5px solid var(--line); border-radius: 12px; font-size: 16px; line-height: 19.2px; color: var(--ink); outline: none; }
+    .field__in:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(11, 95, 214, 0.14); }
+    .kv-dob { display: flex; justify-content: space-between; align-items: baseline; margin: 18px 2px 0; font-size: 15px; line-height: 18px; }
+    .kv-dob label { color: var(--muted); }
+    .kv-dob input { width: 160px; min-width: 0; border: 0; padding: 0; background: none; text-align: right; font-weight: 600; font-size: 15px; line-height: 18px; color: var(--ink); outline: none; }
+
+    .sum { margin-top: 14px; border: 1.5px solid #e6eaf0; border-radius: 16px; overflow: hidden; padding-bottom: 2.5px; }
+    .sum__top { position: relative; overflow: hidden; min-height: 100px; margin: -1.5px -1.5px 0;
+      background: linear-gradient(135deg, #1769e0 0%, #0b5fd6 50%, #0a4cb4 100%); color: #fff; padding: 16px 16px 0; }
+    .sum__swoosh { position: absolute; right: -40px; top: -15px; width: 140px; height: 140px; pointer-events: none; }
+    .sum__arrow { position: absolute; right: 16px; top: 16.3px; width: 20px; height: 20px; }
+    .sum__h { position: relative; font-weight: 700; font-size: 17px; line-height: 20.4px; }
+    .sum__name { position: relative; margin-top: 8px; font-weight: 600; font-size: 16px; line-height: 19.2px; }
+    .sum__meta { position: relative; margin-top: 3.8px; font-size: 14px; line-height: 16.8px; }
+    .sum__row { display: flex; justify-content: space-between; margin: 14px 14.5px 0; font-size: 15px; line-height: 18px; }
+    .sum__row span:first-child { color: var(--muted); }
+    .sum__row span:last-child { font-weight: 600; }
+    .sum__row--kv { margin-top: 10px; height: 39px; padding-top: 10px; border-top: 1px dashed var(--line); }
+
+    .expl { margin-top: 13.8px; max-width: 305.5px; font-size: 14px; line-height: 20px; color: var(--muted); }
+
+    .note { display: flex; gap: 12px; margin-top: 14.2px; min-height: 114px; background: var(--sky); border-radius: 16px; padding: 16px; }
+    .note__ic { width: 34px; height: 34px; border-radius: 17px; background: #fff; display: grid; place-items: center; flex: none;
+      filter: drop-shadow(0 1px .5px rgba(15,30,60,.04)) drop-shadow(0 1px 1px rgba(15,30,60,.06)); }
+    .note__ic img { width: 16px; height: 16px; }
+    .note__txt { margin-top: -.2px; font-size: 14px; line-height: 20px; }
+    .note__txt b { display: block; max-width: 190.7px; font-weight: 700; margin-bottom: 2px; }
+    .note__txt span { display: block; max-width: 212.6px; }
+
+    .check { display: flex; gap: 12px; margin-top: 14px; min-height: 70px; background: var(--page); border-radius: 16px; padding: 14px; cursor: pointer; }
+    .check input { position: absolute; opacity: 0; pointer-events: none; }
+    .check__box { width: 24px; height: 24px; border: 2px solid #8a9099; border-radius: 7px; background: #fff; flex: none; display: grid; place-items: center; }
+    .check__box img { width: 16px; height: 16px; opacity: 0; }
+    .check input:checked + .check__box { background: var(--blue); border-color: var(--blue); }
+    .check input:checked + .check__box img { opacity: 1; }
+    .check input:focus-visible + .check__box { box-shadow: 0 0 0 3px rgba(11, 95, 214, 0.25); }
+    .check__txt { max-width: 141px; margin-top: 1.8px; font-weight: 600; font-size: 14px; line-height: 20px; }
+
+    .btn-sm { height: 44px; border-radius: 22px; font-size: 15px; line-height: 18px; margin-top: 14px; }
+
+    .dock { padding: 9px var(--gutter) 19px; }
+    .dock__grip { width: 40px; height: 4px; border-radius: 2px; background: var(--line); margin: 0 auto; }
+    .dock__head { display: flex; align-items: center; margin-top: 10px; height: 36px; }
+    .dock__ic { width: 36px; height: 36px; border-radius: 12px; background: var(--bar); display: grid; place-items: center; flex: none; }
+    .dock__ic img { width: 16px; height: 16px; }
+    .dock__title { min-width: 0; margin-left: 10px; font-weight: 700; font-size: 15px; line-height: 18px; }
+    .dock__price { margin-left: auto; white-space: nowrap; font-weight: 800; font-size: 17px; line-height: 20.4px; letter-spacing: -0.2px; color: var(--blue); }
+    .dock__chev { width: 20px; height: 20px; margin-left: 10px; transition: transform .2s ease; }
+    .dock__chev img { width: 20px; height: 20px; }
+    .dock__details { padding-left: 46px; margin-top: 7.8px; font-size: 13px; line-height: 19px; color: var(--muted); }
+    .dock .btn { margin-top: 14.2px; padding-right: 28px; }
+    .dock .btn__arrow { position: absolute; right: 24.3px; top: 12px; }
+    .dock.is-collapsed .dock__details { display: none; }
+    .dock.is-collapsed .dock__chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+<div class="screen">
+  <header class="os-bar">
+    <img class="os-bar__logo" src="../assets/5b88d.png" alt="Optisport">
+    <a href="#" class="os-bar__icon os-bar__icon--user" aria-label="Mijn Optisport"><img src="../assets/5d9eb.svg" width="20" height="20" alt=""></a>
+    <button class="os-bar__icon os-bar__icon--menu" aria-label="Menu"><img src="../assets/847ef.svg" width="20" height="20" alt=""></button>
+  </header>
+
+  <section class="mo-hero hero">
+    <img class="mo-hero__swoosh" src="../assets/aeff6.svg" width="150" height="150" alt="">
+    <p class="hero__crumb">Zed &amp; Sop · Het Sloterparkbad</p>
+    <a class="hero__back" href="04-voorkeuren.html"><img src="../assets/bf1ad.svg" width="16" height="16" alt="">Terug naar zwemles</a>
+    <h1>Controleer en meld aan</h1>
+  </section>
+
+  <main class="content">
+    <form class="card stepper" action="06-inschrijving-gelukt.html" id="aanmelding">
+      <div class="done">
+        <span class="done__ok"><img src="../assets/d19d9.svg" width="16" height="16" alt=""></span>
+        <div class="done__txt"><p class="done__lbl">Lesvorm</p><p class="done__val">Regulier · 45 min · 12 kinderen</p></div>
+        <a class="wijzig" href="02b-zwemlespakket.html">Wijzig</a>
+      </div>
+      <div class="done">
+        <span class="done__ok"><img src="../assets/d19d9.svg" width="16" height="16" alt=""></span>
+        <div class="done__txt"><p class="done__lbl">Over je kind</p><p class="done__val">5 oktober 2022 · start bij A</p></div>
+        <a class="wijzig" href="03-over-je-kind.html">Wijzig</a>
+      </div>
+      <div class="done done--last">
+        <span class="done__ok"><img src="../assets/d19d9.svg" width="16" height="16" alt=""></span>
+        <div class="done__txt"><p class="done__lbl">Jullie voorkeuren</p><p class="done__val">Woensdag of zaterdag</p></div>
+        <a class="wijzig" href="04-voorkeuren.html">Wijzig</a>
+      </div>
+      <div class="divider"></div>
+
+      <div class="step"><span class="step__n">3</span><h2 class="step__t">Gegevens en afronden</h2></div>
+
+      <h3 class="sub sub--1">Over je kind</h3>
+      <label class="field"><span class="field__lbl">Voor- en achternaam kind</span>
+        <input class="field__in" type="text" name="kind" value="Noor Jansen" autocomplete="off"></label>
+      <div class="kv-dob"><label for="dob">Geboortedatum</label><input id="dob" type="text" name="geboortedatum" value="5 oktober 2022" readonly></div>
+
+      <h3 class="sub sub--2">Jouw gegevens</h3>
+      <label class="field"><span class="field__lbl">Naam ouder/verzorger</span>
+        <input class="field__in" type="text" name="naam" value="Jennifer Jansen" autocomplete="off"></label>
+      <label class="field"><span class="field__lbl">E-mailadres</span>
+        <input class="field__in" type="email" name="email" value="jennifer.jansen@voorbeeld.nl" autocomplete="off"></label>
+      <label class="field"><span class="field__lbl">Telefoonnummer</span>
+        <input class="field__in" type="tel" name="telefoon" value="06 12 34 56 78" autocomplete="off"></label>
+
+      <div class="sum">
+        <div class="sum__top">
+          <img class="sum__swoosh" src="../assets/1b863.svg" width="140" height="140" alt="">
+          <img class="sum__arrow" src="../assets/644ee.svg" width="20" height="20" alt="">
+          <p class="sum__h">Je zwemles</p>
+          <p class="sum__name">Zed &amp; Sop · Het Sloterparkbad</p>
+          <p class="sum__meta">Regulier · diploma A · woensdag of zaterdag</p>
+        </div>
+        <p class="sum__row"><span>Startpakket · eenmalig</span><span>€ 38,00</span></p>
+        <p class="sum__row sum__row--kv"><span>Lesgeld per maand</span><span>€ 53,20</span></p>
+      </div>
+
+      <p class="expl">Je betaalt pas als Noor een vaste lesplek heeft: dan het startpakket (€ 38,00) en daarna het lesgeld per maand. Het startpakket bevat onder meer de schatkist, het paspoort en de welkomstmap.</p>
+
+      <div class="note">
+        <div class="note__ic"><img src="../assets/3e98b.svg" width="16" height="16" alt=""></div>
+        <p class="note__txt"><b>Aanmelding is nog geen vaste lesplek</b><span>Het bad informeert je wanneer je kind kan starten.</span></p>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" name="voorwaarden">
+        <span class="check__box"><img src="../assets/c9a6a.svg" width="16" height="16" alt=""></span>
+        <span class="check__txt">Ik ga akkoord met de inschrijfvoorwaarden.</span>
+      </label>
+
+      <button class="btn btn-secondary btn-sm" type="button">Lees de actuele voorwaarden</button>
+    </form>
+  </main>
+
+  <div class="dock" id="dock">
+    <div class="dock__grip"></div>
+    <div class="dock__head">
+      <span class="dock__ic"><img src="../assets/14cf6.svg" width="16" height="16" alt=""></span>
+      <p class="dock__title">Jouw aanmelding</p>
+      <p class="dock__price">€ 53,20 / mnd</p>
+      <button class="dock__chev" type="button" aria-expanded="true" aria-controls="dock-details" aria-label="Details in- of uitklappen"><img src="../assets/3fc7b.svg" width="20" height="20" alt=""></button>
+    </div>
+    <div class="dock__details" id="dock-details">
+      <p>Het Sloterparkbad · Regulier · diploma A</p>
+      <p>Woensdag of zaterdag · startpakket € 38,00</p>
+    </div>
+    <a class="btn btn-primary" href="06-inschrijving-gelukt.html">Bevestig je aanmelding<span class="btn__arrow"><img src="../assets/c9a6a.svg" width="16" height="16" alt=""></span></a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var dock = document.getElementById('dock');
+    var chev = dock.querySelector('.dock__chev');
+    chev.addEventListener('click', function () {
+      var collapsed = dock.classList.toggle('is-collapsed');
+      chev.setAttribute('aria-expanded', String(!collapsed));
+    });
+  })();
+</script>
+</body>
+</html>

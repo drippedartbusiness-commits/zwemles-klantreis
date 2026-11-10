@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kies een zwemlespakket · Optisport</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    /* NEW 02b · Kies een zwemlespakket (Figma 737:11183) */
+    .hero { min-height: 279.5px; padding: 10px var(--gutter) 80.5px; } /* groeit mee als de tekst op smalle schermen afbreekt */
+    .hero__crumb { display: inline-flex; align-items: center; gap: 4px; height: 17px; font-weight: 600; font-size: 14px; line-height: 16.8px; color: #fff; position: relative; }
+    .hero__crumb img { width: 16px; height: 16px; }
+    .hero h1 { position: relative; margin-top: 17.5px; font-weight: 700; font-size: min(30px, calc((100vw - 36px) * 30 / 324)); line-height: 34px; letter-spacing: -0.6px; white-space: nowrap; } /* 30px vanaf ~390 */
+    .hero__lead { position: relative; margin-top: 7.8px; max-width: 346.8px; font-size: 15.5px; line-height: 23px; }
+    .hero__pill {
+      position: relative; margin-top: 14.2px;
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 26px; padding: 0 12px 0 10px; border-radius: 13px;
+      background: rgba(6, 23, 58, 0.62); border: 1px solid rgba(255, 255, 255, 0.22); backdrop-filter: blur(4px);
+      font-weight: 600; font-size: 13px; line-height: 15.6px; white-space: nowrap;
+    }
+    .hero__pill img { width: 16px; height: 16px; }
+
+    .content { position: relative; margin-top: -46px; padding: 0 var(--gutter); }
+
+    /* helper */
+    .helper { overflow: hidden; }
+    .helper__head { display: flex; align-items: center; width: 100%; height: 70px; padding: 0 18px; text-align: left; }
+    .helper__ic { width: 38px; height: 38px; border-radius: 12px; background: var(--sky); display: grid; place-items: center; flex: none; margin-top: -2px; }
+    .helper__ic img { width: 20px; height: 20px; }
+    .helper__title { margin-left: 12px; flex: 1; font-weight: 700; font-size: 16px; line-height: 19.2px; padding-top: 0.8px; }
+    .helper__chev { width: 20px; height: 20px; transition: transform .2s ease; }
+    .helper.is-collapsed .helper__chev { transform: rotate(-90deg); }
+    .helper__list { list-style: none; padding: 0 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+    .helper.is-collapsed .helper__list { display: none; }
+    .helper__list li { position: relative; background: var(--page); border-radius: 12px; padding: 11.8px 12px 12.2px 32px; font-size: 14.5px; line-height: 20px; color: var(--muted); }
+    .helper__list li::before { content: ""; position: absolute; left: 14px; top: 18px; width: 8px; height: 8px; border-radius: 4px; background: var(--blue); }
+    .helper__list b { font-weight: 700; color: var(--ink); }
+
+    /* pakketten */
+    .pkgs { margin-top: 16px; display: flex; flex-direction: column; gap: 14px; }
+    .pkg {
+      position: relative; background: #fff; border-radius: 22px; cursor: pointer;
+      border: 1.5px solid #e6eaf0; padding: 16.5px 16.5px 16.5px;
+      filter: drop-shadow(0 1px 0.5px rgba(15,30,60,0.04)) drop-shadow(0 1px 1px rgba(15,30,60,0.06));
+      outline: none;
+    }
+    .pkg.is-selected {
+      border: 2px solid var(--blue); padding: 16px;
+      filter: none;
+      box-shadow: 0 0 0 4px rgba(11,95,214,0.14), 0 8px 18px -10px rgba(15,30,60,0.18), 0 22px 48px -18px rgba(15,30,60,0.38);
+    }
+    .pkg:focus-visible { box-shadow: 0 0 0 4px rgba(11,95,214,0.3); }
+    .pkg.is-disabled { cursor: default; padding-bottom: 16px; }
+    .pkg.is-disabled .dim { opacity: .5; }
+
+    .pkg__head { display: flex; align-items: center; min-height: 24px; }
+    .pkg__radio { width: 24px; height: 24px; border-radius: 12px; background: #fff; border: 2px solid #8a9099; flex: none; position: relative; }
+    .pkg.is-selected .pkg__radio { background: var(--blue); border: 0; }
+    .pkg.is-selected .pkg__radio::after { content: ""; position: absolute; left: 7px; top: 7px; width: 10px; height: 10px; border-radius: 5px; background: #fff; }
+    .pkg__name { margin-left: 12px; flex: 1; min-width: 0; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: -0.2px; }
+    .pkg__badge { height: 22px; border-radius: 11px; padding: 3.8px 10px 0; font-weight: 600; font-size: 12px; line-height: 14.4px; color: #fff; white-space: nowrap; }
+    .pkg__badge--purple { background: var(--blue); }
+    .pkg__badge--blue { background: #0368a0; }
+    .pkg__desc { margin-top: 10px; font-size: 15px; line-height: 22px; color: var(--muted); }
+
+    .pkg__rows { margin-top: 12px; display: grid; grid-template-columns: min(124px, 40%) minmax(0, 1fr); row-gap: 10px; }
+    .pkg__l { font-size: 13.5px; line-height: 20px; color: var(--muted); }
+    .pkg__l--2 { max-width: 89.7px; }
+    .pkg__v { font-weight: 600; font-size: 14.5px; line-height: 20px; margin-top: -0.2px; }
+    .pkg__sub { margin-top: 2px; font-weight: 400; font-size: 13px; line-height: 20px; color: var(--muted); white-space: normal; }
+    .pkg__start { display: inline-block; height: 30px; border-radius: 15px; padding: 4.8px 12px 0; font-weight: 600; font-size: 13px; line-height: 20px; white-space: nowrap; }
+    .pkg__start--cyan { background: var(--sky); color: #035c85; }
+    .pkg__start--grey { background: var(--page); color: var(--muted); }
+    .pkg__per { margin-top: 6.2px; display: inline-flex; align-items: center; gap: 4px; height: 26px; border-radius: 13px; padding: 0 10px; background: var(--bar); color: var(--blue); font-weight: 600; font-size: 12.5px; line-height: 20px; white-space: nowrap; }
+    .pkg__per img { width: 16px; height: 16px; }
+
+    .pkg__total { margin-top: 16px; height: 52px; border-radius: 12px; background: var(--page); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; white-space: nowrap; }
+    .pkg__total span:first-child { min-width: 0; margin-right: 8px; white-space: normal; font-size: 14px; line-height: 16.8px; color: var(--muted); padding-top: 0.8px; }
+    .pkg__total span:last-child { font-weight: 800; font-size: 20px; line-height: 24px; letter-spacing: -0.2px; }
+    .pkg.is-selected .pkg__total { background: var(--bar); }
+    .pkg.is-selected .pkg__total span:last-child { color: var(--blue); }
+    .pkg__total--alt { margin-top: 18.5px; background: var(--page); border: 1px solid rgba(0,0,0,0.12); padding: 0 14px 0 15px; }
+    .pkg__total--alt span:first-child { font-weight: 700; padding-top: 0; }
+    .pkg__total--alt a { font-weight: 600; font-size: 15px; line-height: 24px; letter-spacing: -0.2px; color: var(--blue); text-decoration: underline; text-underline-position: from-font; }
+
+    .warn { margin-top: 12px; display: flex; gap: 12px; background: #fdf1e1; border-radius: 16px; padding: 16px; min-height: 92px; }
+    .warn__ic { width: 34px; height: 34px; border-radius: 17px; background: #fff; display: grid; place-items: center; flex: none;
+      filter: drop-shadow(0 1px .5px rgba(15,30,60,.04)) drop-shadow(0 1px 1px rgba(15,30,60,.06)); }
+    .warn__ic img { width: 16px; height: 16px; }
+    .warn p { min-width: 0; max-width: 223.5px; margin-top: -0.2px; font-size: 14px; line-height: 20px; color: #9a4a00; }
+    .warn b { font-weight: 700; }
+
+    .footnote { margin-top: 23.5px; max-width: 305px; font-weight: 500; font-size: 13px; line-height: 18px; color: var(--muted); }
+
+    .dock { margin-top: 24.2px; padding-top: 13.8px; padding-bottom: 18px; }
+    .dock__chosen { text-align: center; font-size: 14px; line-height: 16.8px; color: var(--muted); margin-bottom: 11.9px; white-space: nowrap; }
+    .dock__chosen b { font-weight: 700; color: var(--ink); }
+
+    /* footer */
+    .os-footer { position: relative; overflow: hidden; background: #fff; border-top: 1px solid #e6eaf0; height: 349.3px; padding: 55.5px 20px 0; }
+    .os-footer__wave { position: absolute; left: 0; top: -1px; width: 100%; height: 34px; }
+    .os-footer__swoosh { position: absolute; right: -25px; top: 20px; width: 150px; height: 150px; pointer-events: none; }
+    .os-footer h2 { position: relative; max-width: 247.2px; font-weight: 800; font-size: 22px; line-height: 26.4px; letter-spacing: -0.2px; }
+    .os-footer h2 span { color: var(--blue); }
+    .os-footer nav { position: relative; margin-top: 22.5px; display: flex; flex-direction: column; gap: 2px; }
+    .os-footer nav a { display: flex; align-items: center; justify-content: space-between; height: 44px; border-bottom: 1px solid #e6eaf0; font-weight: 600; font-size: 16px; line-height: 19.2px; padding-bottom: 1px; }
+    .os-footer nav a img { width: 16px; height: 16px; }
+    .os-footer__legal { position: relative; margin-top: 25.9px; font-size: 13px; line-height: 15.6px; color: var(--muted); }
+  </style>
+</head>
+<body>
+<div class="screen">
+  <header class="os-bar">
+    <img class="os-bar__logo" src="../assets/5b88d.png" alt="Optisport">
+    <a href="#" class="os-bar__icon os-bar__icon--user" aria-label="Mijn Optisport"><img src="../assets/5d9eb.svg" width="20" height="20" alt=""></a>
+    <button class="os-bar__icon os-bar__icon--menu" aria-label="Menu"><img src="../assets/847ef.svg" width="20" height="20" alt=""></button>
+  </header>
+
+  <section class="mo-hero hero">
+    <img class="mo-hero__swoosh" src="../assets/aeff6.svg" width="150" height="150" alt="">
+    <a class="hero__crumb" href="02-sloterparkbad.html"><img src="../assets/bf1ad.svg" width="16" height="16" alt="">Het Sloterparkbad</a>
+    <h1>Kies een zwemlespakket</h1>
+    <p class="hero__lead">Bij elk pakket haalt je kind het landelijk erkende zwemdiploma A, B en C. Het verschil zit in tempo, begeleiding en prijs.</p>
+    <div class="hero__pill"><img src="../assets/1a4b9.svg" width="16" height="16" alt="">Het Sloterparkbad · kind van 4 jaar</div>
+  </section>
+
+  <main class="content">
+    <section class="card helper" id="helper">
+      <button class="helper__head" type="button" aria-expanded="true" aria-controls="helper-list">
+        <span class="helper__ic"><img src="../assets/2edde.svg" width="20" height="20" alt=""></span>
+        <span class="helper__title">Welk pakket past bij jullie?</span>
+        <img class="helper__chev" src="../assets/7843a.svg" width="20" height="20" alt="">
+      </button>
+      <ul class="helper__list" id="helper-list">
+        <li><b>Rustig in eigen tempo?</b> Kies Regulier.</li>
+        <li><p style="max-width:247.1px"><b>Snel resultaat, bijvoorbeeld vóór een vakantie?</b> Kies Turbo.</p></li>
+        <li><p style="max-width:258.6px"><b>Vindt je kind het water spannend?</b> Kies Zwemles Aandacht.</p></li>
+        <li><p style="max-width:270.5px"><b>Wil je alle aandacht voor jouw kind?</b> Privéles kan bij Zwembad Bijlmer.</p></li>
+      </ul>
+    </section>
+
+    <div class="pkgs" role="radiogroup" aria-label="Zwemlespakket">
+      <article class="pkg is-selected" role="radio" aria-checked="true" tabindex="0" data-name="Regulier" data-price="€ 53,20 per maand">
+        <div class="pkg__head"><span class="pkg__radio"></span><h2 class="pkg__name">Regulier</h2><span class="pkg__badge pkg__badge--purple">Meest gekozen</span></div>
+        <p class="pkg__desc">Leren zwemmen in het eigen tempo van je kind. Je kind gaat pas door als het eraan toe is.</p>
+        <div class="pkg__rows">
+          <span class="pkg__l">Tempo</span><span class="pkg__v">1 les per week, 45 minuten</span>
+          <span class="pkg__l pkg__l--2">Gemiddeld tot diploma A</span><span class="pkg__v">18 maanden</span>
+          <span class="pkg__l">Verwachte start</span><span><span class="pkg__start pkg__start--cyan">Over 4–6 weken</span></span>
+          <span class="pkg__l">Prijs</span>
+          <div>
+            <p class="pkg__v">€ 53,20 per maand</p>
+            <p class="pkg__sub">plus € 38 startpakket (eenmalig)</p>
+            <span class="pkg__per">± € 12,30 per les<img src="../assets/e7316.svg" width="16" height="16" alt=""></span>
+          </div>
+        </div>
+        <div class="pkg__total"><span>Gemiddeld totaal tot diploma A</span><span>€ 996</span></div>
+      </article>
+
+      <article class="pkg" role="radio" aria-checked="false" tabindex="-1" data-name="Turbo" data-price="€ 795 totaal">
+        <div class="pkg__head"><span class="pkg__radio"></span><h2 class="pkg__name">Turbo</h2><span class="pkg__badge pkg__badge--blue">Snelst naar diploma A</span></div>
+        <p class="pkg__desc" style="max-width:230.9px">Sneller naar diploma A, met vaste startdatums.</p>
+        <div class="pkg__rows">
+          <span class="pkg__l">Tempo</span><span class="pkg__v">3 lessen per week</span>
+          <span class="pkg__l pkg__l--2">Gemiddeld tot diploma A</span><span class="pkg__v">6 maanden</span>
+          <span class="pkg__l">Verwachte start</span><span><span class="pkg__start pkg__start--grey">April 2027</span></span>
+          <span class="pkg__l">Prijs</span>
+          <div>
+            <p class="pkg__v">€ 795 totaal</p>
+            <p class="pkg__sub" style="max-width:140.9px">Inclusief startpakket en diplomazwemmen</p>
+            <span class="pkg__per">± € 10,20 per les<img src="../assets/e7316.svg" width="16" height="16" alt=""></span>
+          </div>
+        </div>
+        <div class="pkg__total"><span>Gemiddeld totaal tot diploma A</span><span>€ 795</span></div>
+        <div class="warn">
+          <span class="warn__ic"><img src="../assets/6cd61.svg" width="16" height="16" alt=""></span>
+          <p>Turbo kan vanaf 4,5 jaar. Je kind begint met een proefles. Voor jouw kind kan dat <b>vanaf april 2027.</b></p>
+        </div>
+      </article>
+
+      <article class="pkg" role="radio" aria-checked="false" tabindex="-1" data-name="Aandacht" data-price="€ 54,50 per maand">
+        <div class="pkg__head"><span class="pkg__radio"></span><h2 class="pkg__name">Aandacht</h2></div>
+        <p class="pkg__desc" style="max-width:312.7px">Voor kinderen die het water spannend vinden of meer persoonlijke begeleiding nodig hebben.</p>
+        <div class="pkg__rows">
+          <span class="pkg__l">Tempo</span><span class="pkg__v">1 les per week, kleine groep</span>
+          <span class="pkg__l pkg__l--2">Gemiddeld tot diploma A</span><span class="pkg__v">20 maanden</span>
+          <span class="pkg__l">Verwachte start</span><span><span class="pkg__start pkg__start--grey">Over 2 maanden</span></span>
+          <span class="pkg__l">Prijs</span>
+          <div>
+            <p class="pkg__v">€ 54,50 per maand</p>
+            <p class="pkg__sub">plus € 38 startpakket (eenmalig)</p>
+            <span class="pkg__per">± € 12,60 per les<img src="../assets/e7316.svg" width="16" height="16" alt=""></span>
+          </div>
+        </div>
+        <div class="pkg__total"><span>Gemiddeld totaal tot diploma A</span><span>€ 1.128</span></div>
+      </article>
+
+      <article class="pkg is-disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1">
+        <div class="pkg__head"><span class="pkg__radio dim"></span><h2 class="pkg__name dim">Privéles - Niet beschikbaar</h2></div>
+        <p class="pkg__desc dim">Eén-op-één les met een eigen zwemleraar. Alle aandacht gaat naar jouw kind.</p>
+        <div class="pkg__rows">
+          <span class="pkg__l dim">Tempo</span><span class="pkg__v dim">1 les per week, 30 minuten</span>
+        </div>
+        <div class="pkg__total pkg__total--alt"><span>Wel bij Zwembad Bijlmer · 8,6 km</span><a href="#">Bekijk</a></div>
+      </article>
+    </div>
+
+    <p class="footnote">Het totaal tot diploma A is een gemiddelde voor dit zwembad. Prijzen zijn altijd actueel.</p>
+  </main>
+
+  <div class="dock">
+    <p class="dock__chosen" id="chosen">Gekozen: <b>Regulier</b> · € 53,20 per maand</p>
+    <a class="btn btn-primary" href="03-over-je-kind.html">Verder met aanmelden<span class="btn__arrow"><img src="../assets/ce6c4.svg" width="16" height="16" alt=""></span></a>
+  </div>
+
+  <footer class="os-footer">
+    <img class="os-footer__wave" src="../assets/80171.svg" width="390" height="34" alt="">
+    <img class="os-footer__swoosh" src="../assets/91a0e.svg" width="150" height="150" alt="">
+    <h2>Optisport brengt <span>meer in beweging.</span></h2>
+    <nav>
+      <a href="#">Zwemmen en zwemles<img src="../assets/f3c92.svg" width="16" height="16" alt=""></a>
+      <a href="#">Locaties in Amsterdam<img src="../assets/f3c92.svg" width="16" height="16" alt=""></a>
+      <a href="#">Mijn Optisport<img src="../assets/f3c92.svg" width="16" height="16" alt=""></a>
+    </nav>
+    <p class="os-footer__legal">Contact · Privacy · Voorwaarden</p>
+  </footer>
+</div>
+
+
+<script>
+  (function () {
+    var helper = document.getElementById('helper');
+    var head = helper.querySelector('.helper__head');
+    head.addEventListener('click', function () {
+      var collapsed = helper.classList.toggle('is-collapsed');
+      head.setAttribute('aria-expanded', String(!collapsed));
+    });
+
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.pkg:not(.is-disabled)'));
+    var chosen = document.getElementById('chosen');
+    function select(card) {
+      cards.forEach(function (c) {
+        var on = c === card;
+        c.classList.toggle('is-selected', on);
+        c.setAttribute('aria-checked', String(on));
+        c.tabIndex = on ? 0 : -1;
+      });
+      chosen.innerHTML = 'Gekozen: <b>' + card.dataset.name + '</b> · ' + card.dataset.price;
+    }
+    cards.forEach(function (c, i) {
+      c.addEventListener('click', function (e) { if (!e.target.closest('a')) select(c); });
+      c.addEventListener('keydown', function (e) {
+        if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); select(c); }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); var n = cards[(i + 1) % cards.length]; select(n); n.focus(); }
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); var p = cards[(i - 1 + cards.length) % cards.length]; select(p); p.focus(); }
+      });
+    });
+  })();
+</script>
+</body>
+</html>

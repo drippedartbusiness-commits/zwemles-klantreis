@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zwemles bij Het Sloterparkbad · Optisport</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    /* NEW 02 · Het Sloterparkbad (Figma 737:11182) */
+    .eyebrow { font-weight: 700; font-size: 12px; line-height: 14.4px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--blue); }
+    .h2 { font-weight: 700; font-size: 23px; line-height: 28px; letter-spacing: -0.5px; color: var(--ink); }
+    .h3 { font-weight: 700; font-size: 18px; line-height: 24px; letter-spacing: -0.3px; color: var(--ink); }
+    .link { display: inline-flex; align-items: center; gap: 5.3px; font-weight: 600; font-size: 15px; line-height: 18px; color: var(--blue); }
+    .link span { text-decoration: underline; text-underline-position: from-font; }
+    .link img { width: 16px; height: 16px; }
+    .wrap { padding: 0 var(--gutter); }
+
+    /* ---------- photo hero ---------- */
+    .phero { position: relative; height: 400px; overflow: hidden; color: #fff; }
+    .phero__img { position: absolute; left: 0; top: 0; width: 100%; height: 371px; object-fit: cover; }
+    .phero__shade { position: absolute; left: 0; top: 0; width: 100%; height: 371px;
+      background: linear-gradient(180deg, rgba(6,23,58,.8) 0%, rgba(6,23,58,.7) 12%, rgba(15,30,60,.3) 26%, rgba(15,30,60,.35) 38%, rgba(15,30,60,.72) 58%, rgba(6,23,58,.95) 100%); }
+    .phero__wave { position: absolute; left: 0; top: 341px; width: 100%; height: 44px; }
+    .phero__in { position: relative; padding: 0 var(--gutter); }
+    .crumbs { height: 39.5px; padding-top: 12px; display: flex; gap: 5.6px; font-weight: 500; font-size: 13px; line-height: 15.6px; white-space: nowrap; color: rgba(255,255,255,.88); overflow: hidden; }
+    .crumbs > * { flex: none; }
+    .crumbs b { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .crumbs .sep { color: rgba(255,255,255,.6); }
+    .crumbs b { font-weight: 600; color: #fff; }
+    .pill-glass { margin-top: 92.5px; display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10.3px 0 11px;
+      background: rgba(6,23,58,.62); border: 1px solid rgba(255,255,255,.22); border-radius: 13px; backdrop-filter: blur(4px);
+      font-weight: 600; font-size: 13px; line-height: 15.6px; white-space: nowrap; }
+    .pill-glass img { width: 16px; height: 16px; }
+    .phero h1 { margin-top: 8px; max-width: 318.6px; font-weight: 700; font-size: 30px; line-height: 34px; letter-spacing: -0.6px; }
+    .phero__lead { margin-top: 8px; max-width: 345.3px; font-size: 15px; line-height: 21px; color: rgba(255,255,255,.85); }
+
+    /* ---------- loc strip ---------- */
+    .loc { position: relative; z-index: 2; margin: -104px var(--gutter) 0; min-height: 84px; padding: 12.8px 19.6px 12px 15px; overflow: hidden; }
+    .loc__row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; line-height: 22px; white-space: nowrap; }
+    .loc__row img { width: 16px; height: 16px; }
+    .loc__row + .loc__row { margin-top: 10px; }
+    .loc__open { font-weight: 600; color: #15803d; }
+    .loc__rate { margin-left: auto; display: flex; align-items: center; }
+    .loc__stars { display: flex; gap: 1px; margin-right: 6px; }
+    .loc__stars img { width: 15px; height: 15px; }
+    .loc__rate b { font-weight: 700; margin-right: 5.1px; }
+    .loc__rate span { color: var(--muted); }
+
+    /* ---------- steps card ---------- */
+    .steps { position: relative; margin: 12px var(--gutter) 0; padding: 20px 20px 20px; }
+    .step { display: flex; align-items: center; gap: 14px; min-height: 36px; font-weight: 600; font-size: 16px; line-height: 19.2px; }
+    .step__n { width: 36px; height: 36px; border-radius: 12px; background: var(--bar); color: var(--blue); display: grid; place-items: center;
+      font-weight: 800; font-size: 16px; line-height: 19.2px; flex: none; }
+    .step__n--on { background: var(--blue); color: #fff; box-shadow: 0 6px 14px -6px rgba(11,95,214,.8); }
+    .step__line { width: 2px; height: 12px; margin: 0 0 4px 17px; background: #cfe1ff; border-radius: 1px; }
+    .steps .h3 { margin-bottom: 26px; }
+    .steps__txt { margin-top: 11.8px; max-width: 309.9px; font-size: 14px; line-height: 20px; color: var(--muted); }
+    .steps .btn { margin-top: 18.2px; padding-left: 11px; }
+
+    /* ---------- trial ---------- */
+    .trial { position: relative; margin: 24px var(--gutter) 0; min-height: 166px; padding: 19.8px 20px 20px; background: var(--sky); border-radius: 22px; overflow: hidden; }
+    .trial .bub { position: absolute; border: 1.5px solid rgba(0,152,218,.14); border-radius: 50%; }
+    .trial__eyebrow { font-weight: 700; font-size: 12px; line-height: 14.4px; letter-spacing: 1.4px; text-transform: uppercase; color: #035c85; }
+    .trial .h3 { margin-top: 5.8px; }
+    .trial p.trial__txt { margin-top: 5.8px; max-width: 298.8px; font-size: 14px; line-height: 20px; }
+    .trial .link { margin-top: 15.2px; position: relative; }
+
+    /* ---------- lestijden ---------- */
+    .times { margin: 28px var(--gutter) 0; padding: 20px 20px 20.2px; }
+    .times__head { display: flex; gap: 10px; }
+    .times__head > div:last-child { min-width: 0; }
+    .times__ic { width: 34px; height: 34px; border-radius: 17px; background: var(--bar); display: grid; place-items: center; margin-top: 13px; flex: none; }
+    .times__ic img { width: 16px; height: 16px; }
+    .times__sub { max-width: 250.5px; font-weight: 500; font-size: 13px; line-height: 18px; color: var(--muted); margin-top: -0.2px; }
+    .sched { margin-top: 16.2px; background: var(--page); border-radius: 16px; }
+    .sched__row { display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 58px; padding: 0 16px; font-weight: 600; font-size: 15px; line-height: 18px; }
+    .sched__row + .sched__row { height: 59px; border-top: 1px solid #e6eaf0; }
+    .sched__time { display: flex; align-items: center; gap: 6px; width: 135.3px; height: 30px; padding-left: 12px; background: #fff; border-radius: 15px;
+      font-weight: 700; white-space: nowrap; filter: drop-shadow(0 1px .5px rgba(15,30,60,.04)) drop-shadow(0 1px 1px rgba(15,30,60,.06)); }
+    .sched__time img { width: 16px; height: 16px; }
+    .times__foot { margin-top: 13.8px; max-width: 298.6px; font-weight: 500; font-size: 13px; line-height: 18px; color: var(--muted); }
+    .other { margin-top: 13.8px; max-width: 338.5px; font-size: 14px; line-height: 20px; color: var(--muted); }
+    .other + .link { margin-top: 9.2px; }
+
+    /* ---------- Zed & Sop ---------- */
+    .zed { margin-top: 38.8px; }
+    .zed .h2 { margin-top: 5.6px; }
+    .zed__lead { margin-top: 6.2px; max-width: 347.4px; font-size: 16px; line-height: 24px; color: var(--muted); }
+    .feats { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .feat { min-width: 0; min-height: 130px; padding-bottom: 12px; height: auto; padding: 15px 14px 0; background: #fff; border: 1px solid #e6eaf0; border-radius: 16px;
+      filter: drop-shadow(0 1px .5px rgba(15,30,60,.04)) drop-shadow(0 1px 1px rgba(15,30,60,.06)); }
+    .feat__ic { width: 44px; height: 44px; border-radius: 14px; background: var(--bar); display: grid; place-items: center; }
+    .feat__ic--sky { background: var(--sky); }
+    .feat__ic img { width: 20px; height: 20px; }
+    .feat p { margin-top: 12px; max-width: 144px; font-weight: 600; font-size: 15px; line-height: 20px; }
+    @media (max-width: 380px) { .feat p { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; } }
+
+    /* ---------- gratis zwemmen ---------- */
+    .free { position: relative; margin: 14px var(--gutter) 0; min-height: 141px; padding: 18px 20px 16px 74px; border-radius: 22px; overflow: hidden; color: #fff;
+      background: linear-gradient(135deg, #1769e0 0%, #0b5fd6 50%, #0a4cb4 100%); }
+    .free__sw { position: absolute; right: -35px; top: 51px; width: 150px; height: 150px; }
+    .free__ic { position: absolute; left: 20px; top: 18px; width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.14); display: grid; place-items: center; }
+    .free__ic img { width: 20px; height: 20px; }
+    .free h3 { position: relative; max-width: 176.8px; font-weight: 700; font-size: 17px; line-height: 20.4px; padding-top: .1px; }
+    .free p { position: relative; margin-top: 3.9px; max-width: 250.2px; font-size: 14px; line-height: 20px; }
+
+    /* ---------- quote ---------- */
+    .quote { position: relative; margin: 30px var(--gutter) 0; min-height: 175px; padding: 26px 20px 18px; }
+    .quote__mark { position: absolute; left: 18px; top: -14px; width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(180deg, #1c2536 0%, #0b1220 100%); box-shadow: 0 8px 18px -8px rgba(11,95,214,.8);
+      color: #fff; font-weight: 800; font-size: 34px; line-height: 34px; padding: 9.8px 0 0 11.2px; overflow: hidden; }
+    .quote__stars { display: flex; gap: 1px; }
+    .quote__stars img { width: 15px; height: 15px; }
+    .quote blockquote { margin-top: 14px; max-width: 305.1px; font-weight: 600; font-size: 18px; line-height: 26px; letter-spacing: -0.2px; }
+    .quote__by { margin-top: 14px; display: flex; align-items: center; gap: 10px; font-size: 14px; line-height: 16.8px; color: var(--muted); }
+    .quote__av { width: 32px; height: 32px; border-radius: 16px; background: var(--sky); color: #035c85; display: grid; place-items: center;
+      font-weight: 700; font-size: 13px; line-height: 15.6px; }
+
+    /* ---------- place card ---------- */
+    .look { margin-top: 35.8px; }
+    .place { position: relative; margin: 5.8px var(--gutter) 0; overflow: hidden; }
+    .place__img { position: relative; height: 180px; margin-left: -1px; width: calc(100% + 2px); }
+    .place__img img { width: 100%; height: 100%; object-fit: cover; }
+    .place__pill { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 6px; height: 26px; width: 119.2px; padding-left: 12px;
+      background: rgba(0,0,0,.72); border-radius: 13px; color: #fff; font-weight: 600; font-size: 13px; line-height: 15.6px; white-space: nowrap; }
+    .place__pill img { width: 16px; height: 16px; }
+    .place__body { padding: 18px 18px 0; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: 15px; background: var(--bar);
+      color: var(--blue); font-weight: 600; font-size: 13.5px; line-height: 16.2px; white-space: nowrap; }
+    .chip img { width: 16px; height: 16px; }
+    .chips { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 14px; }
+    .info { display: flex; min-width: 0; align-items: center; gap: 10px; margin-top: 11px; font-size: 15px; line-height: 22px; }
+    .info img { width: 16px; height: 16px; flex: none; }
+    .info--addr { margin-top: 14px; }
+    .info--addr span { max-width: 230px; min-width: 0; }
+    .more { position: relative; margin-top: 18px; min-height: 70px; padding-bottom: 12px; border-top: 1px solid #e6eaf0; padding: 16px 18px 0; display: block; }
+    .more b { display: block; font-weight: 700; font-size: 15px; line-height: 18px; color: var(--blue); }
+    .more span { display: block; margin-top: 1.2px; font-size: 13px; line-height: 19.2px; color: var(--muted); padding-right: 40px; }
+    .more i { position: absolute; right: 18px; top: 18.5px; width: 32px; height: 32px; border-radius: 16px; background: var(--bar); display: grid; place-items: center; }
+    .more i img { width: 16px; height: 16px; }
+
+    /* ---------- activities carousel ---------- */
+    .acts-title { margin-top: 35.8px; }
+    .acts { margin-top: 14.2px; height: 230px; display: flex; gap: 12px; padding: 4px 18px 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+    .acts::-webkit-scrollbar { display: none; }
+    .acts.snap { scroll-snap-type: x mandatory; scroll-padding: 0 18px; }
+    .act { position: relative; flex: none; width: 254.9px; height: 210px; border-radius: 22px; overflow: hidden; scroll-snap-align: start;
+      filter: drop-shadow(0 2px 3px rgba(15,30,60,.08)) drop-shadow(0 6px 10px rgba(15,30,60,.18)); color: #fff; }
+    .act > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .act::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 25%, rgba(6,23,58,.75) 58%, rgba(6,23,58,.95) 100%); }
+    .act__txt { position: absolute; z-index: 1; left: 16px; bottom: 12.6px; }
+    .act__txt b { display: block; max-width: 176px; font-weight: 700; font-size: 17px; line-height: 20.4px; }
+    .act__txt span { display: block; margin-top: 1.2px; max-width: 176px; font-size: 13px; line-height: 19.2px; color: rgba(255,255,255,.82); }
+    .act__go { position: absolute; z-index: 1; right: 16px; bottom: 14px; width: 34px; height: 34px; border-radius: 17px; background: #fff; display: grid; place-items: center; }
+    .act__go img { width: 16px; height: 16px; }
+
+    /* ---------- FAQ ---------- */
+    .faq-eyebrow { margin-top: 19.8px; }
+    .faq-title { margin-top: 5.6px; }
+    .faq { margin: 14.2px var(--gutter) 0; background: #fff; border-radius: 22px; box-shadow: var(--shadow-card); overflow: hidden; }
+    .faq__item + .faq__item { border-top: 1px solid #e6eaf0; }
+    .faq__q { position: relative; display: flex; align-items: center; width: 100%; min-height: 68px; padding: 17.8px 18px; text-align: left;
+      font-weight: 600; font-size: 16px; line-height: 19.2px; }
+    .faq__q span { max-width: calc(100% - 50px); }
+    .faq__chev { position: absolute; right: 18px; top: 50%; margin-top: -16px; width: 32px; height: 32px; border-radius: 16px; background: var(--bar);
+      display: grid; place-items: center; transform: rotate(90deg); transition: transform .2s ease; }
+    .faq__chev img { width: 16px; height: 16px; }
+    .faq__item.open .faq__chev { transform: rotate(-90deg); }
+    .faq__a { display: none; padding: 0 18px 18px; font-size: 14px; line-height: 20px; color: var(--muted); }
+    .faq__item.open .faq__a { display: block; }
+
+    /* ---------- contact ---------- */
+    .contact { margin: 36px var(--gutter) 0; padding: 20px 20px 20px; }
+    .contact__who { margin-top: 14px; display: flex; align-items: center; gap: 14px; }
+    .contact__av { width: 68px; height: 68px; border-radius: 34px; overflow: hidden; flex: none; }
+    .contact__av img { width: 100%; height: 100%; object-fit: cover; }
+    .contact__who > div:last-child { min-width: 0; }
+    .contact__who b { display: block; font-weight: 700; font-size: 16px; line-height: 19.2px; }
+    .contact__who span { display: block; margin-top: .5px; font-size: 14px; line-height: 20px; color: var(--muted); }
+    .contact__txt { margin-top: 13.8px; max-width: 287.8px; font-size: 14px; line-height: 20px; }
+    .contact .btn { margin-top: 16.2px; }
+    .contact .btn img { width: 20px; height: 20px; }
+
+    /* ---------- alternatief ---------- */
+    .alt-title { margin-top: 35.8px; }
+    .alt-sub { margin-top: 6px; font-size: 14px; line-height: 20px; color: var(--muted); }
+    .alt { margin: 14.2px var(--gutter) 0; padding: 16px; }
+    .alt__top { display: flex; gap: 14px; }
+    .alt__top > div:last-child { min-width: 0; }
+    .alt__media { width: 88px; height: 88px; border-radius: 16px; overflow: hidden; flex: none; }
+    .alt__media img { width: 100%; height: 100%; object-fit: cover; }
+    .alt__name { margin-top: 10.2px; font-weight: 800; font-size: 18px; line-height: 21.6px; letter-spacing: -0.2px; }
+    .alt__dist { margin-top: 4px; display: flex; align-items: center; gap: 4px; font-weight: 500; font-size: 14px; line-height: 20px; color: var(--muted); }
+    .alt__dist img { width: 14px; height: 14px; flex: none; }
+    .alt__age { margin-top: 4px; font-weight: 600; font-size: 13px; line-height: 18px; }
+    .tags { margin-top: 14px; border-top: 1px solid #e6eaf0; padding-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { display: flex; align-items: center; height: 24px; border-radius: 12px; font-weight: 600; font-size: 12.5px; line-height: 15px; white-space: nowrap; }
+    .tag--on { gap: 4px; padding: 0 9.3px 0 8px; background: #e3f4ea; color: #1b7a43; }
+    .tag--on img { width: 16px; height: 16px; }
+    .tag--off { padding: 0 9px; border: 1px solid #e6eaf0; color: #98a1ae; text-decoration: line-through; text-decoration-skip-ink: none; }
+    .alt .btn { margin-top: 16px; height: 44px; border-radius: 22px; font-size: 15px; line-height: 18px; }
+
+    /* ---------- footer ---------- */
+    .foot { position: relative; margin-top: 44px; min-height: 349.3px; padding-bottom: 20px; background: #fff; border-top: 1px solid #e6eaf0; overflow: hidden; padding: 55.5px 20px 0; }
+    .foot__wave { position: absolute; left: 0; top: -1px; width: 100%; height: 34px; }
+    .foot__sw { position: absolute; right: -25px; top: 20px; width: 150px; height: 150px; }
+    .foot__claim { position: relative; max-width: 247.2px; font-weight: 800; font-size: 22px; line-height: 26.4px; letter-spacing: -0.2px; }
+    .foot__claim em { font-style: normal; color: var(--blue); }
+    .foot__links { position: relative; margin-top: 21.5px; }
+    .foot__links a { display: flex; align-items: center; justify-content: space-between; height: 44px; border-bottom: 1px solid #e6eaf0;
+      font-weight: 600; font-size: 16px; line-height: 19.2px; }
+    .foot__links a + a { margin-top: 2px; }
+    .foot__links img { width: 16px; height: 16px; }
+    .foot__legal { position: relative; margin-top: 25.9px; font-size: 13px; line-height: 15.6px; color: var(--muted); }
+  </style>
+</head>
+<body>
+<div class="screen">
+  <header class="os-bar">
+    <img class="os-bar__logo" src="../assets/5b88d.png" alt="Optisport">
+    <a href="#" class="os-bar__icon os-bar__icon--user" aria-label="Mijn Optisport"><img src="../assets/5d9eb.svg" width="20" height="20" alt=""></a>
+    <button class="os-bar__icon os-bar__icon--menu" aria-label="Menu"><img src="../assets/847ef.svg" width="20" height="20" alt=""></button>
+  </header>
+
+  <!-- photo hero -->
+  <section class="phero">
+    <img class="phero__img" src="../assets/f06ce.png" alt="">
+    <div class="phero__shade"></div>
+    <img class="phero__wave" src="../assets/1332f.svg" width="390" height="44" alt="">
+    <div class="phero__in">
+      <nav class="crumbs" aria-label="Kruimelpad">
+        <a href="#">Zwemmen</a><span class="sep">/</span><a href="01-zwemles-amsterdam.html">Zwemles in Amsterdam</a><span class="sep">/</span><b>Het Sloterparkbad</b>
+      </nav>
+      <div class="pill-glass"><img src="../assets/069de.svg" width="16" height="16" alt="">Zed &amp; Sop · zwemles vanaf 4 jaar</div>
+      <h1>Zwemles voor je kind bij Het Sloterparkbad</h1>
+      <p class="phero__lead">Het grootste bad in de regio Amsterdam, voor jong en oud!</p>
+    </div>
+  </section>
+
+  <!-- adres / openingstijden -->
+  <div class="card loc">
+    <p class="loc__row"><img src="../assets/a7cdd.svg" width="16" height="16" alt="">President Allendelaan 3 · 1,8 km</p>
+    <div class="loc__row">
+      <img src="../assets/0c7d9.svg" width="16" height="16" alt=""><span class="loc__open">Nu open · tot 21:30</span>
+      <div class="loc__rate">
+        <div class="loc__stars">
+          <img src="../assets/ccf11.svg" width="15" height="15" alt=""><img src="../assets/ccf11.svg" width="15" height="15" alt=""><img src="../assets/ccf11.svg" width="15" height="15" alt=""><img src="../assets/ccf11.svg" width="15" height="15" alt=""><img src="../assets/dbc26.svg" width="15" height="15" alt="">
+        </div>
+        <b>4,6</b><span>(212)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- stappen -->
+  <section class="card steps">
+    <h2 class="h3">Klaar om je kind in te schrijven?</h2>
+    <div class="step"><span class="step__n step__n--on">1</span>Kies een pakket dat bij jullie past</div>
+    <div class="step__line"></div>
+    <div class="step"><span class="step__n">2</span>Schrijf je kind in</div>
+    <div class="step__line"></div>
+    <div class="step"><span class="step__n">3</span>Wij plannen de eerste les</div>
+    <p class="steps__txt">Eerst kies je een zwemlespakket: zo krijgt je kind les. Elk pakket leidt naar diploma A, B en C. Het verschil zit in tempo, groepsgrootte en prijs.</p>
+    <a class="btn btn-primary" href="02b-zwemlespakket.html">Kies een pakket en meld je aan<span class="btn__arrow"><img src="../assets/ce6c4.svg" width="16" height="16" alt=""></span></a>
+  </section>
+
+  <!-- proefles -->
+  <section class="trial">
+    <i class="bub" style="right:74.4px;top:138.3px;width:8.8px;height:8.8px;opacity:.9"></i>
+    <i class="bub" style="right:124.5px;top:153.8px;width:15px;height:15px;opacity:.95"></i>
+    <i class="bub" style="right:22px;top:40px;width:12px;height:12px;opacity:.5"></i>
+    <p class="trial__eyebrow">Alvast samen wennen aan het water</p>
+    <h2 class="h3">Twijfel je nog?</h2>
+    <p class="trial__txt">Plan eerst een proefles van 30 minuten. De zwemleraar adviseert daarna het juiste niveau.</p>
+    <a class="link" href="#"><span>Plan een gratis proefles</span><img src="../assets/c2886.svg" width="16" height="16" alt=""></a>
+  </section>
+
+  <!-- lestijden -->
+  <section class="card times">
+    <div class="times__head">
+      <div class="times__ic"><img src="../assets/b59a3.svg" width="16" height="16" alt=""></div>
+      <div>
+        <h2 class="h3">Lestijden</h2>
+        <p class="times__sub">Vaste lestijden bij Het Sloterparkbad, elke week</p>
+      </div>
+    </div>
+    <div class="sched">
+      <div class="sched__row">Maandag<span class="sched__time"><img src="../assets/0c7d9.svg" width="16" height="16" alt="">16:00 – 17:30</span></div>
+      <div class="sched__row">Woensdag<span class="sched__time"><img src="../assets/0c7d9.svg" width="16" height="16" alt="">13:00 – 17:00</span></div>
+      <div class="sched__row">Zaterdag<span class="sched__time"><img src="../assets/0c7d9.svg" width="16" height="16" alt="">09:00 – 12:00</span></div>
+    </div>
+    <p class="times__foot">Na aanmelden krijg je een vaste lestijd op een van deze momenten.</p>
+  </section>
+
+  <div class="wrap">
+    <p class="other">Komen deze dagen niet uit? Bekijk een zwembad met andere lesdagen.</p>
+    <a class="link" href="01-zwemles-amsterdam.html"><span>Bekijk baden met andere lesdagen</span><img src="../assets/c2886.svg" width="16" height="16" alt=""></a>
+
+    <!-- Zed & Sop -->
+    <section class="zed">
+      <p class="eyebrow">Zed &amp; Sop</p>
+      <h2 class="h2">Zo leert je kind zwemmen</h2>
+      <p class="zed__lead">Met Zed en Sop leert je kind spelenderwijs naar diploma A, B en C.</p>
+      <div class="feats">
+        <div class="feat"><div class="feat__ic"><img src="../assets/b5486.svg" width="20" height="20" alt=""></div><p>Leuk beloningssysteem</p></div>
+        <div class="feat"><div class="feat__ic feat__ic--sky"><img src="../assets/e442c.svg" width="20" height="20" alt=""></div><p>In het eigen tempo van je kind</p></div>
+        <div class="feat"><div class="feat__ic feat__ic--sky"><img src="../assets/c47f8.svg" width="20" height="20" alt=""></div><p>Gediplomeerde zweminstructeurs</p></div>
+        <div class="feat"><div class="feat__ic"><img src="../assets/4a75a.svg" width="20" height="20" alt=""></div><p>Volg de voortgang in Mijn Optisport</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- gratis zwemmen -->
+  <section class="free">
+    <img class="free__sw" src="../assets/c874e.svg" width="150" height="150" alt="">
+    <div class="free__ic"><img src="../assets/93329.svg" width="20" height="20" alt=""></div>
+    <h3>Gratis zwemmen vanaf inschrijving</h3>
+    <p>Je kind zwemt gratis in alle Optisport-zwembaden, samen met een betalende volwassene.</p>
+  </section>
+
+  <!-- quote -->
+  <figure class="card quote">
+    <div class="quote__mark" aria-hidden="true">“</div>
+    <div class="quote__stars">
+      <img src="../assets/ec763.svg" width="15" height="15" alt=""><img src="../assets/ec763.svg" width="15" height="15" alt=""><img src="../assets/ec763.svg" width="15" height="15" alt=""><img src="../assets/ec763.svg" width="15" height="15" alt="">
+    </div>
+    <blockquote>“Ze vond de eerste les spannend. Nu vraagt ze zelf wanneer we weer gaan.”</blockquote>
+    <figcaption class="quote__by"><span class="quote__av">S</span>Sanne, moeder van Mila</figcaption>
+  </figure>
+
+  <!-- binnenkijken -->
+  <p class="eyebrow wrap look">Binnenkijken bij Het Sloterparkbad</p>
+  <section class="card place">
+    <div class="place__img">
+      <img src="../assets/371ac.png" alt="Zwembad van Het Sloterparkbad">
+      <a href="#" class="place__pill"><img src="../assets/c6394.svg" width="16" height="16" alt="">Bekijk foto’s</a>
+    </div>
+    <div class="place__body">
+      <h2 class="h3">Dit is je zwemlocatie</h2>
+      <div class="chips">
+        <span class="chip"><img src="../assets/cd53e.svg" width="16" height="16" alt="">Warm doelgroepenbad · 30 °C</span>
+        <span class="chip"><img src="../assets/300d5.svg" width="16" height="16" alt="">Kijkruimte voor ouders</span>
+      </div>
+      <p class="info info--addr"><img src="../assets/a7cdd.svg" width="16" height="16" alt=""><span>President Allendelaan 3, 1064 GW Amsterdam</span></p>
+      <p class="info"><img src="../assets/e19e4.svg" width="16" height="16" alt="">020-5063506</p>
+      <p class="info"><img src="../assets/0c7d9.svg" width="16" height="16" alt="">Zwemles op ma, wo en za</p>
+    </div>
+    <a class="more" href="#"><b>Meer over Het Sloterparkbad</b><span>Foto’s, voorzieningen, openingstijden en route</span><i><img src="../assets/f3c92.svg" width="16" height="16" alt=""></i></a>
+  </section>
+
+  <!-- meer activiteiten -->
+  <h2 class="h2 wrap acts-title">Bij Het Sloterparkbad kan je meer!</h2>
+  <div class="acts" id="acts">
+    <a class="act" href="#"><img src="../assets/6709b.png" alt=""><div class="act__txt"><b>Familiezwemmen</b><span>Samen spelen en spetteren</span></div><span class="act__go"><img src="../assets/f3c92.svg" width="16" height="16" alt=""></span></a>
+    <a class="act" href="#"><img src="../assets/5eb49.png" alt=""><div class="act__txt"><b>Baby- en peuterzwemmen</b><span>Samen het water ontdekken · 0–4 jaar</span></div><span class="act__go"><img src="../assets/f3c92.svg" width="16" height="16" alt=""></span></a>
+    <a class="act" href="#"><img src="../assets/371ac.png" alt=""><div class="act__txt"><b>Banenzwemmen</b><span>Even tijd voor jezelf</span></div><span class="act__go"><img src="../assets/f3c92.svg" width="16" height="16" alt=""></span></a>
+  </div>
+
+  <!-- FAQ -->
+  <p class="eyebrow wrap faq-eyebrow">Vragen vóór je aanmeldt</p>
+  <h2 class="h2 wrap faq-title">Veelgestelde vragen</h2>
+  <div class="faq">
+    <div class="faq__item">
+      <button class="faq__q" type="button" aria-expanded="false"><span>Wanneer kan mijn kind starten?</span><i class="faq__chev"><img src="../assets/f3c92.svg" width="16" height="16" alt=""></i></button>
+      <p class="faq__a">Na je aanmelding plannen wij de eerste les op een van de vaste lestijden. Je ontvangt een lesvoorstel dat je eerst beoordeelt.</p>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" type="button" aria-expanded="false"><span>Mijn kind heeft al een diploma. Wat nu?</span><i class="faq__chev"><img src="../assets/f3c92.svg" width="16" height="16" alt=""></i></button>
+      <p class="faq__a">Geef bij de inschrijving aan welk diploma je kind al heeft. Dan stroomt je kind in op het juiste niveau richting diploma B of C.</p>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" type="button" aria-expanded="false"><span>Kan mijn kind eerst kennismaken?</span><i class="faq__chev"><img src="../assets/f3c92.svg" width="16" height="16" alt=""></i></button>
+      <p class="faq__a">Ja. Plan een gratis proefles van 30 minuten. De zwemleraar adviseert daarna het juiste niveau.</p>
+    </div>
+    <div class="faq__item">
+      <button class="faq__q" type="button" aria-expanded="false"><span>Wat zit er in het startpakket?</span><i class="faq__chev"><img src="../assets/f3c92.svg" width="16" height="16" alt=""></i></button>
+      <p class="faq__a">Alles wat je kind nodig heeft om met Zed en Sop te beginnen. Je ziet de inhoud bij het kiezen van een zwemlespakket.</p>
+    </div>
+  </div>
+
+  <!-- contact -->
+  <section class="card contact">
+    <h2 class="h3">Vragen over Het Sloterparkbad?</h2>
+    <div class="contact__who">
+      <div class="contact__av"><img src="../assets/0c947.png" alt="Inge de Bruin"></div>
+      <div><b>Locatiemanager Inge de Bruin</b><span>Het Sloterparkbad</span></div>
+    </div>
+    <p class="contact__txt">Vragen over de les of wat past bij je kind? We denken met je mee.</p>
+    <a class="btn btn-secondary" href="tel:0205063506"><img src="../assets/544bc.svg" width="20" height="20" alt="">Neem contact met ons op</a>
+  </section>
+
+  <!-- ander zwembad -->
+  <h2 class="h2 wrap alt-title">Liever een ander zwembad in de buurt?</h2>
+  <p class="wrap alt-sub">Bekijk ook zwemles in Amsterdam-Zuidoost.</p>
+  <section class="card alt">
+    <div class="alt__top">
+      <div class="alt__media"><img src="../assets/f06ce.png" alt=""></div>
+      <div>
+        <h3 class="alt__name">Zwembad Bijlmer</h3>
+        <p class="alt__dist"><img src="../assets/735c3.svg" width="14" height="14" alt="">Zuidoost · 8,6 km van jou</p>
+        <p class="alt__age">Zwemles vanaf 4 jaar</p>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tag--on"><img src="../assets/8d713.svg" width="16" height="16" alt="">Regulier</span>
+      <span class="tag tag--off">Aandacht</span>
+      <span class="tag tag--off">Turbo</span>
+      <span class="tag tag--on"><img src="../assets/8d713.svg" width="16" height="16" alt="">Privé</span>
+    </div>
+    <a class="btn btn-secondary" href="#">Bekijk zwemles bij Bijlmer</a>
+  </section>
+
+  <!-- footer -->
+  <footer class="foot">
+    <img class="foot__wave" src="../assets/80171.svg" width="390" height="34" alt="">
+    <img class="foot__sw" src="../assets/91a0e.svg" width="150" height="150" alt="">
+    <p class="foot__claim">Optisport brengt <em>meer in beweging.</em></p>
+    <nav class="foot__links">
+      <a href="#">Zwemmen en zwemles<img src="../assets/f3c92.svg" width="16" height="16" alt=""></a>
+      <a href="01-zwemles-amsterdam.html">Locaties in Amsterdam<img src="../assets/f3c92.svg" width="16" height="16" alt=""></a>
+      <a href="#">Mijn Optisport<img src="../assets/f3c92.svg" width="16" height="16" alt=""></a>
+    </nav>
+    <p class="foot__legal">Contact · Privacy · Voorwaarden</p>
+  </footer>
+</div>
+
+
+<script>
+  // FAQ-accordeon
+  document.querySelectorAll('.faq__q').forEach(function (q) {
+    q.addEventListener('click', function () {
+      var item = q.parentElement, open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open);
+    });
+  });
+  // Carrousel: start in de Figma-stand (eerste kaart deels uit beeld), scroll-snap zodra er gescrold wordt
+  (function () {
+    var acts = document.getElementById('acts');
+    acts.scrollLeft = 66;
+    function snap() { acts.classList.add('snap'); }
+    ['pointerdown', 'touchstart', 'wheel'].forEach(function (e) { acts.addEventListener(e, snap, { once: true, passive: true }); });
+  })();
+</script>
+</body>
+</html>

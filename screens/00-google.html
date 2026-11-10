@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>zwemles kind amsterdam - Google zoeken</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+  <style>
+    /* NEW 00 · Google: zwemles kind Amsterdam (Figma 737:11180) */
+    .screen.g { background: #f1f3f4; font-family: "Roboto", Arial, sans-serif; color: #202124; padding-bottom: 40px; }
+    .g p { margin: 0; }
+
+    /* header */
+    .g-head { position: relative; height: 160.5px; background: #fff; box-shadow: 0 1px 0 #ebebeb; }
+    .g-head__menu { position: absolute; left: 14px; top: 20px; width: 24px; height: 24px; }
+    .g-logo { position: absolute; left: calc(50% - 42.3px); top: 16.4px; font-weight: 500; font-size: 26px; line-height: 31.2px; letter-spacing: -1px; white-space: nowrap; }
+    .g-avatar { position: absolute; right: 14px; top: 16px; width: 32px; height: 32px; border-radius: 16px; background: #5c6bc0;
+      color: #fff; font-weight: 500; font-size: 15px; line-height: 18px; padding: 7px 0 0 11.8px; }
+    .g-search { position: absolute; left: 14px; top: 62px; right: 14px; height: 48px; border-radius: 24px; background: #fff;
+      box-shadow: 0 1px 3px rgba(32, 33, 36, 0.18); }
+    .g-search__q { position: absolute; left: 16px; top: 14.4px; font-size: 16px; line-height: 19.2px; white-space: nowrap; }
+    .g-search__ic { position: absolute; top: 14px; width: 20px; height: 20px; }
+    .g-search__ic--x { right: 46px; }
+    .g-search__ic--mic { left: auto; right: 14px; }
+    .g-tabs { position: absolute; left: 14px; top: 116px; right: 14px; height: 44.5px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
+      display: flex; gap: 22px; padding: 6px 0 0 4px; }
+    .g-tab { position: relative; height: 38.5px; padding-top: 9.8px; font-size: 14px; line-height: 16.8px; color: #5f6368; white-space: nowrap; }
+    .g-tab.is-on { color: #1a73e8; font-weight: 500; }
+    .g-tab.is-on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 3px 3px 0 0; background: #1a73e8; }
+
+    /* cards */
+    .g-card { position: relative;  margin: 10px 8px 0; background: #fff; border-radius: 16px; padding: 0 16px 16px; }
+    .g-card--first { margin-top: 14px; }
+    .g-card__h { padding-top: 15.7px; font-size: 18px; line-height: 21.6px; letter-spacing: -0.3px; }
+
+    /* result */
+    .g-src { position: relative; height: 56.3px; padding: 15.8px 36px 0 38px; }
+    .g-fav { position: absolute; left: 0; top: 17.3px; width: 28px; height: 28px; border-radius: 14px; background: #eee8f6; overflow: hidden; }
+    .g-fav img { position: absolute; left: 1px; top: 1px; width: 26px; height: 26px; object-fit: cover; }
+    .g-src__name { font-size: 14px; line-height: 16.8px; }
+    .g-src__url { font-size: 12px; line-height: 14.4px; color: #4d5156; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: -0.3px; }
+    .g-src__dots { position: absolute; right: 16px; top: 21.3px; width: 20px; height: 20px; }
+    .g-title { display: block; font-size: 20px; line-height: 26px; color: #1a0dab; }
+    .g-title--u { max-width: 329.4px; text-decoration: underline; text-underline-position: from-font; }
+    .g-title:hover { text-decoration: underline; }
+    .g-desc { margin-top: 6px !important; font-size: 14px; line-height: 22px; color: #4d5156; }
+    .g-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12.2px; }
+    .g-chip { height: 32.5px; border: 1px solid #dadce0; border-radius: 16.3px; padding: 6.9px 14px 0; font-size: 14px; line-height: 16.8px; white-space: nowrap; }
+    .g-chip:hover { background: #f8f9fa; }
+
+    /* plaatsen */
+    .g-map { margin-top: 11.7px; width: 100%; height: 150px; border-radius: 12px; overflow: hidden; }
+    .g-map img { width: 100%; object-fit: cover; height: 150px; }
+    .g-places { margin-top: 6px; }
+    .g-place { position: relative; height: 104px; border-bottom: 1px solid #ebebeb; white-space: nowrap; font-size: 14px; line-height: 16.8px; color: #4d5156; }
+    .g-place > * { position: absolute; left: 0; }
+    .g-place__n { top: 11.9px; font-weight: 500; font-size: 16px; line-height: 19.2px; color: #1a0dab; }
+    .g-place__r { top: 35.1px; }
+    .g-place__s { top: 35.9px; left: 22.5px; color: #fbbc04; letter-spacing: -1px; }
+    .g-place__c { top: 35.1px; left: 91.5px; }
+    .g-place__t { top: 55.9px; }
+    .g-place__o { top: 74.4px; }
+    .g-place__o b { font-weight: 400; color: #188038; }
+    .g-more { height: 31.5px; border-top: 1px solid #ebebeb; display: flex; justify-content: center; align-items: flex-start; gap: 4.8px; padding-top: 11.9px;
+      font-size: 14px; line-height: 16.8px; color: #1a73e8; }
+    .g-more img { width: 16px; height: 16px; margin-top: 0.4px; }
+
+    /* vragen */
+    .g-faq { margin-top: 11.7px; }
+    .g-q { border-bottom: 1px solid #ebebeb; }
+    .g-q:last-child { border-bottom: 0; }
+    .g-q__btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; text-align: left; padding: 14.4px 0 14.4px; font-size: 16px; line-height: 19.2px; color: #202124; }
+    .g-q:first-child .g-q__btn { padding: 13.8px 0 13.8px; }
+    .g-q__t { max-width: 256.1px; min-width: 0; }
+    .g-q__t--nw { max-width: none; }
+    .g-q__btn img { width: 20px; height: 20px; flex: none; margin: -0.4px 0; transition: transform .2s ease; }
+    .g-q.is-open .g-q__btn img { transform: rotate(180deg); }
+    .g-q__a { display: none; padding: 0 0 14.4px; font-size: 14px; line-height: 22px; color: #4d5156; }
+    .g-q.is-open .g-q__a { display: block; }
+  </style>
+</head>
+<body>
+<div class="screen g">
+  <header class="g-head">
+    <img class="g-head__menu" src="../assets/5c29d.svg" width="24" height="24" alt="">
+    <p class="g-logo" aria-label="Google"><span style="color:#4285f4">G</span><span style="color:#ea4335">o</span><span style="color:#fbbc05">o</span><span style="color:#4285f4">g</span><span style="color:#34a853">l</span><span style="color:#ea4335">e</span></p>
+    <div class="g-avatar">J</div>
+    <div class="g-search">
+      <p class="g-search__q">zwemles kind amsterdam</p>
+      <img class="g-search__ic g-search__ic--x" src="../assets/d96a0.svg" width="20" height="20" alt="">
+      <img class="g-search__ic g-search__ic--mic" src="../assets/9ea9f.svg" width="20" height="20" alt="">
+    </div>
+    <nav class="g-tabs" role="tablist">
+      <button class="g-tab is-on" role="tab" aria-selected="true">Alle</button>
+      <button class="g-tab" role="tab" aria-selected="false">Maps</button>
+      <button class="g-tab" role="tab" aria-selected="false">Afbeeldingen</button>
+      <button class="g-tab" role="tab" aria-selected="false">Video’s</button>
+      <button class="g-tab" role="tab" aria-selected="false">Nieuws</button>
+    </nav>
+  </header>
+
+  <!-- resultaat 1 -->
+  <article class="g-card g-card--first">
+    <div class="g-src">
+      <div class="g-fav"><img src="../assets/5b88d.png" alt=""></div>
+      <p class="g-src__name">Optisport</p>
+      <p class="g-src__url">https://www.optisport.nl › zwemles › amsterdam</p>
+      <img class="g-src__dots" src="../assets/d7cf0.svg" width="20" height="20" alt="">
+    </div>
+    <a class="g-title g-title--u" href="01-zwemles-amsterdam.html">Zwemles voor je kind in Amsterdam | Optisport</a>
+    <p class="g-desc" style="max-width:322.8px">Zwemles voor kinderen vanaf 4 jaar. Vergelijk zwembaden in Amsterdam op lesdagen, lesvorm en startindicatie. Vind een plek die bij jullie past.</p>
+    <div class="g-chips">
+      <a class="g-chip" href="01-zwemles-amsterdam.html">Zwemles kind</a>
+      <a class="g-chip" href="01-zwemles-amsterdam.html">Prijzen</a>
+      <a class="g-chip" href="01-zwemles-amsterdam.html">Proefles</a>
+      <a class="g-chip" href="01-zwemles-amsterdam.html">Locaties</a>
+    </div>
+  </article>
+
+  <!-- plaatsen -->
+  <section class="g-card">
+    <h2 class="g-card__h" style="font-weight:400">Plaatsen</h2>
+    <div class="g-map"><img src="../assets/f8582.svg" width="342" height="150" alt=""></div>
+    <div class="g-places">
+      <div class="g-place">
+        <p class="g-place__n">Het Sloterparkbad</p>
+        <p class="g-place__r">4,6</p><p class="g-place__s">★★★★★</p><p class="g-place__c">(212)</p>
+        <p class="g-place__t">Zwembad · Nieuw-West</p>
+        <p class="g-place__o"><b>Open</b> · Sluit om 21:30</p>
+      </div>
+      <div class="g-place">
+        <p class="g-place__n">Zwembad Bijlmer</p>
+        <p class="g-place__r">4,3</p><p class="g-place__s">★★★★★</p><p class="g-place__c">(158)</p>
+        <p class="g-place__t">Zwembad · Zuidoost</p>
+        <p class="g-place__o"><b>Open</b> · Sluit om 21:00</p>
+      </div>
+      <div class="g-place">
+        <p class="g-place__n">Sportfondsenbad Oost</p>
+        <p class="g-place__r">4,4</p><p class="g-place__s">★★★★★</p><p class="g-place__c">(1.024)</p>
+        <p class="g-place__t">Zwembad · Oost</p>
+        <p class="g-place__o"><b>Open</b> · Sluit om 22:00</p>
+      </div>
+    </div>
+    <a class="g-more" href="#">Meer plaatsen<img src="../assets/22bf0.svg" width="16" height="16" alt=""></a>
+  </section>
+
+  <!-- vragen die anderen stellen -->
+  <section class="g-card">
+    <h2 class="g-card__h" style="font-weight:400">Vragen die anderen stellen</h2>
+    <div class="g-faq">
+      <div class="g-q">
+        <button class="g-q__btn" aria-expanded="false"><span class="g-q__t">Vanaf welke leeftijd kan een kind op zwemles?</span><img src="../assets/f3a59.svg" width="20" height="20" alt=""></button>
+        <p class="g-q__a">Bij Optisport kan je kind vanaf 4 jaar beginnen met zwemles.</p>
+      </div>
+      <div class="g-q">
+        <button class="g-q__btn" aria-expanded="false"><span class="g-q__t g-q__t--nw">Hoe lang duurt het tot zwemdiploma A?</span><img src="../assets/f3a59.svg" width="20" height="20" alt=""></button>
+        <p class="g-q__a">Dat verschilt per kind en hangt af van hoe vaak je kind les heeft.</p>
+      </div>
+      <div class="g-q">
+        <button class="g-q__btn" aria-expanded="false"><span class="g-q__t g-q__t--nw">Wat kost zwemles in Amsterdam?</span><img src="../assets/f3a59.svg" width="20" height="20" alt=""></button>
+        <p class="g-q__a">De prijs verschilt per zwembad en lespakket. Bekijk de prijzen op de website van het zwembad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- resultaat 2 -->
+  <article class="g-card" style="padding-bottom:16.2px">
+    <div class="g-src">
+      <div class="g-fav"><img src="../assets/5b88d.png" alt=""></div>
+      <p class="g-src__name">Optisport</p>
+      <p class="g-src__url">https://www.optisport.nl › locaties › amsterdam</p>
+      <img class="g-src__dots" src="../assets/d7cf0.svg" width="20" height="20" alt="">
+    </div>
+    <a class="g-title" href="#">Zwembaden in Amsterdam | Optisport</a>
+    <p class="g-desc" style="max-width:340.2px">Zoek je een specifiek zwembad? Bekijk alle Optisport-locaties in Amsterdam, met openingstijden en aanbod.</p>
+  </article>
+</div>
+
+<script>
+  document.querySelectorAll('.g-tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('.g-tab').forEach(function (o) { o.classList.remove('is-on'); o.setAttribute('aria-selected', 'false'); });
+      t.classList.add('is-on'); t.setAttribute('aria-selected', 'true');
+    });
+  });
+  document.querySelectorAll('.g-q__btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var q = b.parentElement, open = q.classList.toggle('is-open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+</script>
+
+</body>
+</html>

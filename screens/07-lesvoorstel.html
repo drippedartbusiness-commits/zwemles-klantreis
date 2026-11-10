@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Een lesvoorstel voor Noor · Optisport</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    /* NEW 07 · Persoonlijk lesvoorstel (Figma 737:11188) */
+    .hero { height: 166px; padding: 10px var(--gutter) 0; }
+    .hero__crumb { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; line-height: 15.6px; }
+    .hero__crumb img { width: 16px; height: 16px; }
+    .hero h1 { margin-top: 14.2px; font-weight: 700; font-size: 30px; line-height: 34px; letter-spacing: -0.6px; }
+
+    /* korte pagina: onderbalk altijd onderaan het scherm */
+    .screen { display: flex; flex-direction: column; }
+    .content { flex: 1 0 auto; }
+    .content { position: relative; margin-top: -36px; padding: 0 var(--gutter) 24px; display: flex; flex-direction: column; gap: 16px; }
+
+    .ticket { position: relative; padding: 21px 21px 22px; }
+    .ticket__top { display: flex; gap: 14px; align-items: flex-start; }
+    .ticket .cal { width: 58px; height: 72.5px; }
+    .ticket .cal__m { height: 19.5px; font-size: 11px; line-height: 13.2px; letter-spacing: 1.1px; padding-top: 3.2px; }
+    .ticket .cal__d { font-size: 24px; line-height: 28.8px; letter-spacing: -0.5px; margin-top: 4px; }
+    .ticket .cal__w { font-weight: 600; font-size: 10.5px; line-height: 12.6px; color: var(--muted); margin-top: 1.5px; }
+    .ticket__when { padding-top: 12px; min-width: 0; }
+    .ticket__time { font-weight: 700; font-size: 22px; line-height: 27px; letter-spacing: -0.4px; }
+    .ticket__first { margin-top: 3.3px; font-weight: 600; font-size: 15px; line-height: 18px; color: var(--blue); }
+    .ticket__perf { position: relative; margin: 31px -2px 0; border-top: 2px dashed var(--line); }
+    .ticket__perf::before, .ticket__perf::after {
+      content: ""; position: absolute; top: -12px; width: 22px; height: 22px; border-radius: 11px; background: var(--page);
+    }
+    .ticket__perf::before { left: -31px; box-shadow: inset -4px 0 4px -4px rgba(15,30,60,.15); }
+    .ticket__perf::after { right: -31px; box-shadow: inset 4px 0 4px -4px rgba(15,30,60,.15); }
+    .ticket__row { display: flex; align-items: center; gap: 10px; font-size: 15px; line-height: 18px; }
+    .ticket__row img { width: 16px; height: 16px; }
+    .ticket__row--first { margin-top: 19px; }
+    .ticket__row--price { margin-top: 12px; justify-content: space-between; }
+    .ticket__row img { flex: none; }
+    .ticket__row--price span:first-child { color: var(--muted); }
+    .ticket__row--price span:last-child { font-weight: 600; }
+
+    .note { display: flex; gap: 12px; background: var(--sky); border-radius: 16px; padding: 16px 16px 16px; min-height: 94px; }
+    .note__ic { width: 34px; height: 34px; border-radius: 17px; background: #fff; display: grid; place-items: center; flex: none;
+      filter: drop-shadow(0 1px .5px rgba(15,30,60,.04)) drop-shadow(0 1px 1px rgba(15,30,60,.06)); }
+    .note__ic img { width: 16px; height: 16px; }
+    .note p { font-size: 14px; line-height: 20px; max-width: 241px; }
+    .note b { display: block; font-weight: 700; }
+
+    .dock__when { display: flex; gap: 12px; align-items: flex-start; min-height: 45px; margin-bottom: 12px; }
+    .dock .cal { width: 46px; height: 45px; box-shadow: var(--shadow-sm); }
+    .dock .cal__m { height: 17px; font-size: 9px; line-height: 10.8px; letter-spacing: .9px; padding-top: 3.1px; }
+    .dock .cal__d { font-size: 18px; line-height: 21.6px; letter-spacing: -.4px; margin-top: 2.2px; }
+    .dock__title { font-weight: 600; font-size: 16px; line-height: 24px; margin-top: .3px; }
+    .dock__sub { font-size: 14px; line-height: 20px; color: var(--muted); }
+    .dock .btn { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+<div class="screen">
+  <header class="os-bar">
+    <img class="os-bar__logo" src="../assets/5b88d.png" alt="Optisport">
+    <a href="#" class="os-bar__icon os-bar__icon--user" aria-label="Mijn Optisport"><img src="../assets/5d9eb.svg" width="20" height="20" alt=""></a>
+    <button class="os-bar__icon os-bar__icon--menu" aria-label="Menu"><img src="../assets/847ef.svg" width="20" height="20" alt=""></button>
+  </header>
+
+  <section class="mo-hero hero">
+    <img class="mo-hero__swoosh" src="../assets/aeff6.svg" width="150" height="150" alt="">
+    <div class="hero__crumb"><img src="../assets/5ad19.svg" width="16" height="16" alt="">Mijn Optisport</div>
+    <h1>Een lesvoorstel voor Noor</h1>
+  </section>
+
+  <main class="content">
+    <article class="card ticket">
+      <div class="ticket__top">
+        <div class="cal">
+          <div class="cal__m">dec</div>
+          <div class="cal__d">16</div>
+          <div class="cal__w">woensdag</div>
+        </div>
+        <div class="ticket__when">
+          <p class="ticket__time">Woensdag 16:00–16:45</p>
+          <p class="ticket__first">Eerste les: woensdag 16 december</p>
+        </div>
+      </div>
+      <div class="ticket__perf" aria-hidden="true"></div>
+      <p class="ticket__row ticket__row--first"><img src="../assets/43b5f.svg" width="16" height="16" alt="">Het Sloterparkbad · Regulier · diploma A</p>
+      <p class="ticket__row ticket__row--price"><span>Lesgeld per maand</span><span>€ 53,20</span></p>
+    </article>
+
+    <div class="note">
+      <div class="note__ic"><img src="../assets/ad37a.svg" width="16" height="16" alt=""></div>
+      <p><b>Past dit in jullie week?</b>Je beoordeelt het voorstel voordat de lesplek definitief wordt.</p>
+    </div>
+
+    <button class="btn btn-secondary" type="button">Vraag een ander moment</button>
+  </main>
+
+  <div class="dock">
+    <div class="dock__when">
+      <div class="cal"><div class="cal__m">dec</div><div class="cal__d">16</div></div>
+      <div>
+        <p class="dock__title">Woensdag · 16:00</p>
+        <p class="dock__sub">Start 16 december · Het Sloterparkbad</p>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="08-voorbereiden.html">Accepteer dit lesvoorstel<span class="btn__arrow"><img src="../assets/c9a6a.svg" width="16" height="16" alt=""></span></a>
+  </div>
+</div>
+
+</body>
+</html>
